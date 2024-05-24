@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../core/app_color.dart';
-import './AnotherScreen.dart';
+import './another_screen.dart';
 
 class BasicScreen extends StatelessWidget {
   const BasicScreen({super.key});

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../../controllers/CounterController.dart';
+import '../../controllers/counter_controller.dart';
 import '../../core/app_color.dart';
 
 class CounterScreen extends GetView<CounterController> {
