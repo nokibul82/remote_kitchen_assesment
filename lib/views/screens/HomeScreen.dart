@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:remote_kitchen_assesment/views/screens/BasicScreen.dart';
 
+import './BasicScreen.dart';
 import '../../core/app_color.dart';
 
 class HomeScreen extends StatelessWidget {

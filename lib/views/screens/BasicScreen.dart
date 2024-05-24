@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:remote_kitchen_assesment/core/app_color.dart';
+import '../../core/app_color.dart';
 import './AnotherScreen.dart';
 
 class BasicScreen extends StatelessWidget {
