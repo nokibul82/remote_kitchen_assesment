@@ -62,18 +62,43 @@ class HomeScreen extends StatelessWidget {
                           ));
                     },
                     child: Container(
+                      padding: const EdgeInsets.all(3),
                       decoration: BoxDecoration(
                           color: AppColor.primary,
                           borderRadius: BorderRadius.circular(15)),
                       child: Center(
                           child: Text(
-                        "Assignment 2 (Counter App State with Getx)",
+                        "Assignment 2 (Counter App with Getx)",
                         textAlign: TextAlign.center,
                         style: Theme.of(context)
                             .textTheme
                             .bodyLarge
                             ?.copyWith(color: AppColor.secondary),
                       )),
+                    ),
+                  ),
+                  InkWell(
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => const CounterScreen(),
+                          ));
+                    },
+                    child: Container(
+                      padding: const EdgeInsets.all(3),
+                      decoration: BoxDecoration(
+                          color: AppColor.primary,
+                          borderRadius: BorderRadius.circular(15)),
+                      child: Center(
+                          child: Text(
+                            "Assignment 3 (Fetching Data from a REST API)",
+                            textAlign: TextAlign.center,
+                            style: Theme.of(context)
+                                .textTheme
+                                .bodyLarge
+                                ?.copyWith(color: AppColor.secondary),
+                          )),
                     ),
                   ),
                 ],
