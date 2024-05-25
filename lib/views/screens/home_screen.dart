@@ -127,6 +127,30 @@ class HomeScreen extends StatelessWidget {
                       )),
                     ),
                   ),
+                  InkWell(
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => const PostScreen(),
+                          ));
+                    },
+                    child: Container(
+                      padding: const EdgeInsets.all(3),
+                      decoration: BoxDecoration(
+                          color: AppColor.primary,
+                          borderRadius: BorderRadius.circular(15)),
+                      child: Center(
+                          child: Text(
+                            "Assignment 5 \n(Third-Party API Integration - OpenWeatherMap)",
+                            textAlign: TextAlign.center,
+                            style: Theme.of(context)
+                                .textTheme
+                                .bodyLarge
+                                ?.copyWith(color: AppColor.secondary),
+                          )),
+                    ),
+                  ),
                 ],
               ),
             ),
