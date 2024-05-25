@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:get/get.dart';
 import 'dart:convert';
 import 'package:dio/dio.dart';
@@ -9,9 +11,25 @@ import '../models/post_model.dart';
 class PostController extends GetxController {
   final postList = Rx<List<PostModel>>([]);
   final isLoading = false.obs;
+  final hasInternet = false.obs;
 
+  void checkUserConnection() async {
+    print("checkUserConnection called");
+    try {
+      final result = await InternetAddress.lookup(jsonPlaceholderApi_id);
+      print(result.length);
+      if (result.isNotEmpty && result[0].rawAddress.isNotEmpty) {
+        hasInternet.value = true;
+      }
+    } catch (e) {
+      print(e.toString());
+      hasInternet.value = false;
+    }
+    print(hasInternet.value);
+  }
   @override
   void onInit() async {
+    checkUserConnection();
     await getAllPosts();
     super.onInit();
   }

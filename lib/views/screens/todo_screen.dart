@@ -24,29 +24,51 @@ class TodoScreen extends StatelessWidget {
           ),
         ),
         body: Obx(() {
-          return controller.isLoading.value
-              ? const Center(
-                  child: CircularProgressIndicator(
-                    color: AppColor.primary,
-                  ),
+          return !controller.hasInternet.value
+              ? Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    const Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Icon(Icons.wifi_off),
+                        SizedBox(
+                          width: 10,
+                        ),
+                        Text("Internet is not connected.")
+                      ],
+                    ),
+                    OutlinedButton(
+                        onPressed: () {
+                          controller.checkUserConnection();
+                        },
+                        child: const Text("Check Internet"))
+                  ],
                 )
-              : RefreshIndicator(
-            color: AppColor.primary,
-                  onRefresh: () async {
-                    await controller.getAllTodos();
-                  },
-                  child: Scrollbar(
-                    thumbVisibility: true,
-                    interactive: true,
-                    trackVisibility: true,
-                    controller: scrollbarController,
-                    thickness: 10,
-                    child: ListView.builder(
+              : controller.isLoading.value
+                  ? const Center(
+                      child: CircularProgressIndicator(
+                        color: AppColor.primary,
+                      ),
+                    )
+                  : RefreshIndicator(
+                      color: AppColor.primary,
+                      onRefresh: () async {
+                        await controller.getAllTodos();
+                      },
+                      child: Scrollbar(
+                        thumbVisibility: true,
+                        interactive: true,
+                        trackVisibility: true,
                         controller: scrollbarController,
-                        itemCount: todoList.length,
-                        itemBuilder: (context, index) =>
-                            TodoCard(todoModel: todoList[index])),
-                  ));
+                        thickness: 10,
+                        child: ListView.builder(
+                            controller: scrollbarController,
+                            itemCount: todoList.length,
+                            itemBuilder: (context, index) =>
+                                TodoCard(todoModel: todoList[index])),
+                      ));
         }),
       ),
     );

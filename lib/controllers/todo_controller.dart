@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:get/get.dart';
 import 'dart:convert';
 import 'package:dio/dio.dart';
@@ -9,9 +11,26 @@ import '../models/todo_model.dart';
 class TodoController extends GetxController {
   final todoList = Rx<List<TodoModel>>([]);
   final isLoading = false.obs;
+  final hasInternet = false.obs;
+
+  void checkUserConnection() async {
+    print("checkUserConnection called");
+    try {
+      final result = await InternetAddress.lookup(jsonPlaceholderApi_id);
+      print(result.length);
+      if (result.isNotEmpty && result[0].rawAddress.isNotEmpty) {
+        hasInternet.value = true;
+      }
+    } catch (e) {
+      print(e.toString());
+      hasInternet.value = false;
+    }
+    print(hasInternet.value);
+  }
 
   @override
   void onInit() async {
+    checkUserConnection();
     await getAllTodos();
     super.onInit();
   }
@@ -38,7 +57,7 @@ class TodoController extends GetxController {
         print("list length  ${todoList.value.length}");
       } else {
         isLoading.value = false;
-        Get.snackbar("Error", json.decode(response.data)["message"],
+        Get.snackbar("Error", response.statusCode.toString(),
             snackPosition: SnackPosition.TOP,
             backgroundColor: Colors.redAccent,
             colorText: Colors.white);
