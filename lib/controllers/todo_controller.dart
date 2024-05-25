@@ -20,9 +20,12 @@ class TodoController extends GetxController {
     try {
       isLoading.value = true;
       todoList.value.clear();
-      final dio = Dio(BaseOptions(headers: {
-        "Accept": "application/json",
-      }));
+      final dio = Dio(BaseOptions(
+          headers: {
+            "Accept": "application/json",
+          },
+          connectTimeout: const Duration(seconds: 10),
+          receiveTimeout: const Duration(seconds: 10)));
       var response = await dio.get("$jsonPlaceholderApi/todos");
       print(response.statusCode);
       if (response.statusCode == 200) {
@@ -41,10 +44,12 @@ class TodoController extends GetxController {
             colorText: Colors.white);
       }
     } catch (e) {
+
       Get.snackbar("Error", "Someting went wrong. Network error",
           snackPosition: SnackPosition.TOP,
           backgroundColor: Colors.redAccent,
           colorText: Colors.white);
+      isLoading.value = false;
     }
   }
 }
