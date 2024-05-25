@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:remote_kitchen_assesment/views/screens/counter_screen.dart';
+
+import 'counter_screen.dart';
+import 'post_screen.dart';
 import 'basic_screen.dart';
 import '../../core/app_color.dart';
 import 'todo_screen.dart';
@@ -93,6 +95,30 @@ class HomeScreen extends StatelessWidget {
                       child: Center(
                           child: Text(
                         "Assignment 3 (Fetching Data from a REST API)",
+                        textAlign: TextAlign.center,
+                        style: Theme.of(context)
+                            .textTheme
+                            .bodyLarge
+                            ?.copyWith(color: AppColor.secondary),
+                      )),
+                    ),
+                  ),
+                  InkWell(
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => const PostScreen(),
+                          ));
+                    },
+                    child: Container(
+                      padding: const EdgeInsets.all(3),
+                      decoration: BoxDecoration(
+                          color: AppColor.primary,
+                          borderRadius: BorderRadius.circular(15)),
+                      child: Center(
+                          child: Text(
+                        "Assignment 4 (Offline Capabilities with Local Storage)",
                         textAlign: TextAlign.center,
                         style: Theme.of(context)
                             .textTheme
