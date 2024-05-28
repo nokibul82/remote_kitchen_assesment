@@ -1,3 +1,3 @@
-String api_sog = "saveongroceries.com.au";
-String api = "https://www.saveongroceries.com.au";
-String api_secondary = "saveongroceries.com.au";
+String jsonPlaceholderApi = 'https://jsonplaceholder.typicode.com';
+String jsonPlaceholderApi_id = 'jsonplaceholder.typicode.com';
+String weatherApi = "https://api.openweathermap.org/data/2.5/weather";

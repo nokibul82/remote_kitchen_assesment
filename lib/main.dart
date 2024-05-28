@@ -1,7 +1,21 @@
 import 'package:flutter/material.dart';
-import './views/screens/HomeScreen.dart';
+import 'package:flutter/services.dart';
+import 'package:hive_flutter/hive_flutter.dart';
+import './core/app_color.dart';
+import './views/screens/home_screen.dart';
 import './core/app_theme.dart';
-void main() {
+
+void main() async{
+  SystemChrome.setSystemUIOverlayStyle(
+    const SystemUiOverlayStyle(
+      statusBarBrightness: Brightness.dark,
+      statusBarIconBrightness: Brightness.dark,
+      statusBarColor: AppColor.background,
+      systemNavigationBarColor: AppColor.background,
+    ),
+  );
+  await Hive.initFlutter();
+  Hive.openBox("database");
   runApp(const MyApp());
 }
 
