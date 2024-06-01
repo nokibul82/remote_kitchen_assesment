@@ -5,6 +5,7 @@ import 'post_screen.dart';
 import 'basic_screen.dart';
 import '../../core/app_color.dart';
 import 'todo_screen.dart';
+import 'weather_screen.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -132,7 +133,7 @@ class HomeScreen extends StatelessWidget {
                       Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => const PostScreen(),
+                            builder: (context) => const WeatherScreen(),
                           ));
                     },
                     child: Container(

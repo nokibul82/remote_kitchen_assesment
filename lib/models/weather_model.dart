@@ -4,42 +4,42 @@
 
 import 'dart:convert';
 
-PostModel postModelFromJson(String str) => PostModel.fromJson(json.decode(str));
+WeatherModel weatherModelFromJson(String str) => WeatherModel.fromJson(json.decode(str));
 
-String postModelToJson(PostModel data) => json.encode(data.toJson());
+String weatherModelToJson(WeatherModel data) => json.encode(data.toJson());
 
-class PostModel {
-  Coord coord;
-  List<Weather> weather;
-  String base;
-  Main main;
-  int visibility;
-  Wind wind;
-  Clouds clouds;
-  int dt;
-  Sys sys;
-  int timezone;
-  int id;
-  String name;
-  int cod;
+class WeatherModel {
+  Coord? coord;
+  List<Weather>? weather;
+  String? base;
+  Main? main;
+  int? visibility;
+  Wind? wind;
+  Clouds? clouds;
+  int? dt;
+  Sys? sys;
+  int? timezone;
+  int? id;
+  String? name;
+  int? cod;
 
-  PostModel({
-    required this.coord,
-    required this.weather,
-    required this.base,
-    required this.main,
-    required this.visibility,
-    required this.wind,
-    required this.clouds,
-    required this.dt,
-    required this.sys,
-    required this.timezone,
-    required this.id,
-    required this.name,
-    required this.cod,
+  WeatherModel({
+    this.coord,
+    this.weather,
+    this.base,
+    this.main,
+    this.visibility,
+    this.wind,
+    this.clouds,
+    this.dt,
+    this.sys,
+    this.timezone,
+    this.id,
+    this.name,
+    this.cod,
   });
 
-  factory PostModel.fromJson(Map<String, dynamic> json) => PostModel(
+  factory WeatherModel.fromJson(Map<String, dynamic> json) => WeatherModel(
     coord: Coord.fromJson(json["coord"]),
     weather: List<Weather>.from(json["weather"].map((x) => Weather.fromJson(x))),
     base: json["base"],
@@ -56,15 +56,15 @@ class PostModel {
   );
 
   Map<String, dynamic> toJson() => {
-    "coord": coord.toJson(),
-    "weather": List<dynamic>.from(weather.map((x) => x.toJson())),
+    "coord": coord?.toJson(),
+    "weather": List<dynamic>.from(weather!.map((x) => x.toJson())),
     "base": base,
-    "main": main.toJson(),
+    "main": main?.toJson(),
     "visibility": visibility,
-    "wind": wind.toJson(),
-    "clouds": clouds.toJson(),
+    "wind": wind?.toJson(),
+    "clouds": clouds?.toJson(),
     "dt": dt,
-    "sys": sys.toJson(),
+    "sys": sys?.toJson(),
     "timezone": timezone,
     "id": id,
     "name": name,
